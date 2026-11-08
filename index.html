@@ -94,6 +94,9 @@ section.alt { background: var(--card); border-block: 1px solid var(--line); }
 .app-band { margin-top: 36px; padding: 24px 28px; border: 1px solid var(--line); border-left: 6px solid var(--leaf); border-radius: 16px; background: var(--paper); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
 .app-band div:first-child { display: grid; gap: 6px; }
 .app-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.meet { display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: center; margin-bottom: 40px; }
+.meet img { width: 100%; height: auto; border-radius: 20px; box-shadow: 0 12px 30px rgba(18,48,44,.18); }
+.meet .section-head { margin-bottom: 0; }
 .why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .why div { display: grid; gap: 8px; }
 
@@ -119,7 +122,9 @@ footer p { max-width: 90ch; }
 
 @media (max-width: 860px) {
   .hero .wrap, .contact { grid-template-columns: 1fr; }
-  .products, .why, .tips { grid-template-columns: 1fr; }
+  .products, .why, .tips, .meet { grid-template-columns: 1fr; }
+  .meet { gap: 24px; }
+  .meet img { max-width: 320px; }
   .steps { grid-template-columns: 1fr; }
   .steps li, .steps li + li { padding: 20px 0; border-left: 0; border-bottom: 1px solid var(--line); }
   section { padding-block: 48px; }
@@ -237,9 +242,13 @@ footer p { max-width: 90ch; }
 
   <section id="why">
     <div class="wrap">
-      <div class="section-head">
-        <h2>Why order through me</h2>
-        <p>Your order goes through Unicity's official store and ships straight from them. You get a real person to call.</p>
+      <div class="meet">
+        <img src="adelisa.webp" width="480" height="587" alt="Adelisa smiling in sunglasses on a sunny day in Gilbert, Arizona, holding her water tumbler">
+        <div class="section-head">
+          <div class="kicker">Meet Adelisa</div>
+          <h2>Hi, I'm Adelisa.</h2>
+          <p>I'm an independent Unicity distributor in Gilbert, Arizona. Your order goes through Unicity's official store and ships straight from them, and you get a real person to text when you have questions.</p>
+        </div>
       </div>
       <div class="why">
         <div><h3>Help getting started</h3><p>I'll walk you through placing your first order and setting up your daily routine.</p></div>
