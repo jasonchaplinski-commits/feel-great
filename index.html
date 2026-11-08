@@ -114,6 +114,24 @@ section { padding-block: 72px; }
 .meet .sig { margin-top: 14px; color: var(--muted); }
 .meet .ctas { margin-top: 22px; }
 
+.signup { background: linear-gradient(135deg, #fff4df, #e7f2ec); border: 1px solid var(--line); border-radius: 32px; padding: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; }
+.signup .sub { color: #3f4f4a; margin-top: 12px; font-size: 1.1rem; }
+.signup .checks { margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; font-weight: 600; }
+.signup .checks li::before { content: "\2713"; color: var(--leaf); font-weight: 800; margin-right: 8px; }
+#guide-form { background: #fff; border-radius: 22px; padding: 24px; box-shadow: 0 12px 30px rgba(18,48,44,.1); }
+#guide-form .fields { display: grid; gap: 12px; }
+#guide-form label { font-weight: 700; font-size: .92rem; display: grid; gap: 5px; }
+#guide-form input { font: inherit; padding: 12px 14px; border: 1.5px solid #cfc3b2; border-radius: 12px; background: #fffdf9; }
+#guide-form input:focus-visible { outline: 3px solid var(--sun); outline-offset: 1px; border-color: var(--ink); }
+#guide-form .btn { border: 0; cursor: pointer; font: inherit; font-weight: 700; }
+#guide-form .btn[disabled] { opacity: .6; cursor: wait; }
+#guide-form .fine { font-size: .8rem; color: var(--muted); text-align: center; }
+#guide-form .err { color: #a33a1f; font-size: .88rem; min-height: 1em; }
+#guide-form .done { display: none; text-align: center; gap: 10px; padding: 8px 4px; }
+#guide-form .done .ok { width: 56px; height: 56px; border-radius: 50%; background: var(--leaf); color: #fff; display: grid; place-items: center; font-size: 1.8rem; margin: 0 auto; }
+#guide-form .done p { color: var(--muted); }
+#guide-form.sent .fields { display: none; }
+#guide-form.sent .done { display: grid; }
 .app-band { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; padding: 22px 26px; border-radius: 20px; background: #fff; border: 1px solid var(--line); }
 .app-band div:first-child { display: grid; gap: 4px; }
 
@@ -138,7 +156,8 @@ footer p { max-width: 95ch; }
 
 @media (max-width: 900px) {
   nav.links { display: none; }
-  .hero .wrap, .day, .meet, .final { grid-template-columns: 1fr; }
+  .hero .wrap, .day, .meet, .final, .signup { grid-template-columns: 1fr; }
+  .signup { padding: 26px; border-radius: 24px; }
   .hero .wrap { padding-block: 36px 90px; gap: 36px; }
   .photo-card { width: min(320px, 86%); }
   .sticks { grid-template-columns: 1fr; }
@@ -278,9 +297,40 @@ footer p { max-width: 95ch; }
       <ol class="steps">
         <li><h3>Order online</h3><p>Tap Order. You check out on Unicity's official store.</p></li>
         <li><h3>Box ships to you</h3><p>Unicity ships your Feel Great pack straight to your door.</p></li>
-        <li><h3>I text you a setup guide</h3><p>Simple times and tips for your first week.</p></li>
+        <li><h3>Get my free starter guide</h3><p>Sign up below and I'll email you simple times and tips for your first week.</p></li>
         <li><h3>Two-week check-in</h3><p>I follow up to see how it's going and answer questions.</p></li>
       </ol>
+    </div>
+  </section>
+
+  <section id="guide" style="padding-top:0">
+    <div class="wrap">
+      <div class="signup">
+        <div>
+          <div class="kicker">Free starter guide</div>
+          <h2>Just ordered? Get my free first-week guide.</h2>
+          <p class="sub">I'll email you a simple plan so your first week on Feel Great is easy.</p>
+          <ul class="checks">
+            <li>Your daily times for Unimate and Balance</li>
+            <li>Tips for your first overnight fasts</li>
+            <li>A check-in from me at two weeks</li>
+          </ul>
+        </div>
+        <form id="guide-form" novalidate>
+          <div class="fields">
+            <label for="g-name">First name<input type="text" id="g-name" name="fields[name]" autocomplete="given-name"></label>
+            <label for="g-email">Email<input type="email" id="g-email" name="fields[email]" autocomplete="email" required></label>
+            <div class="err" id="g-err" role="alert"></div>
+            <button class="btn" type="submit" id="g-btn">Send me the guide</button>
+            <p class="fine">Just the guide, a check-in and a reorder reminder. Unsubscribe anytime.</p>
+          </div>
+          <div class="done" aria-live="polite">
+            <div class="ok">&#10003;</div>
+            <h3 id="g-thx">Almost done!</h3>
+            <p>Check your inbox and tap <b>confirm</b> in the email from Adelisa. Your guide arrives right after.</p>
+          </div>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -369,6 +419,29 @@ footer p { max-width: 95ch; }
     t.setAttribute("x", p[0]); t.setAttribute("y", p[1] + 4.5); t.setAttribute("text-anchor", "middle"); t.setAttribute("font-size", "13"); t.setAttribute("font-weight", "700");
     t.setAttribute("font-family", "Source Sans 3, sans-serif"); t.setAttribute("fill", "#12302c"); t.textContent = m[1];
     markers.appendChild(c); markers.appendChild(t);
+  });
+})();
+</script>
+<script>
+(function () {
+  var f = document.getElementById("guide-form"); if (!f) return;
+  var err = document.getElementById("g-err"), btn = document.getElementById("g-btn");
+  var URL = "https://assets.mailerlite.com/jsonp/2779868/forms/203609221841814982/subscribe";
+  f.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var name = document.getElementById("g-name").value.trim();
+    var email = document.getElementById("g-email").value.trim();
+    if (!/^\S+@\S+\.\S+$/.test(email)) { err.textContent = "Please enter a valid email so the guide can reach you."; return; }
+    err.textContent = ""; btn.disabled = true; btn.textContent = "Sending...";
+    var data = new FormData();
+    data.append("fields[email]", email); data.append("fields[name]", name);
+    data.append("ml-submit", "1"); data.append("anticsrf", "true");
+    fetch(URL, { method: "POST", body: data }).then(function (r) { return r.json(); }).then(function (j) {
+      if (j && j.success) { document.getElementById("g-thx").textContent = name ? "Almost done, " + name + "!" : "Almost done!"; f.classList.add("sent"); }
+      else { throw new Error("bad"); }
+    }).catch(function () {
+      err.textContent = "Something went wrong. Please try again, or text Adelisa at (480) 953-8003.";
+    }).then(function () { btn.disabled = false; btn.textContent = "Send me the guide"; });
   });
 })();
 </script>
