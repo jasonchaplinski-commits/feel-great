@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feel Great with Adelisa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Layout idea: the day itself is the hero. A 24-hour dial shows when each drink goes and where the 16-hour fast sits; the rest of the page follows that clock from morning to night. */
+  --ink: #12302c;        /* deep mate green, text and dial */
+  --paper: #f3f6f4;      /* cool off-white with a green bias */
+  --card: #ffffff;
+  --sun: #e8a33d;        /* morning amber: eating window, buttons */
+  --leaf: #2f7a62;       /* fasting arc, links */
+  --muted: #5b6e69;
+  --line: #d6e0dc;
+  --display: "Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 18px;
+  line-height: 1.55;
+}
+a { color: var(--leaf); }
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 6px;
+}
+h1, h2, h3 { font-family: var(--display); line-height: 1.05; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); font-weight: 700; letter-spacing: -0.01em; }
+h3 { font-size: 1.35rem; font-weight: 700; }
+p { margin: 0; max-width: 62ch; }
+.wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+
+/* Header */
+header.top { border-bottom: 1px solid var(--line); background: var(--paper); }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
+.brand { display: flex; flex-direction: column; }
+.brand b { font-family: var(--display); font-size: 1.2rem; }
+.brand span { font-size: .85rem; color: var(--muted); }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--sun); color: var(--ink); font-weight: 600;
+  padding: 12px 22px; border-radius: 999px; text-decoration: none;
+  border: 2px solid var(--sun); transition: transform .15s ease, background .15s ease;
+}
+.btn:hover { transform: translateY(-1px); background: #f0b356; }
+.btn.ghost { background: transparent; border-color: var(--ink); }
+.btn.ghost:hover { background: var(--card); }
+
+/* Hero */
+.hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; padding-block: 56px 40px; }
+.hero .lede { font-size: 1.2rem; color: var(--muted); margin-top: 20px; }
+.hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.kicker { font-weight: 600; color: var(--leaf); text-transform: uppercase; letter-spacing: .08em; font-size: .8rem; margin-bottom: 14px; }
+
+.dial-box { display: grid; gap: 18px; justify-items: center; }
+.dial { width: min(360px, 100%); height: auto; }
+.legend { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; width: min(360px, 100%); }
+.legend li { display: grid; grid-template-columns: 28px 64px 1fr; align-items: baseline; gap: 8px; font-size: .95rem; }
+.legend .n { width: 24px; height: 24px; border-radius: 50%; background: var(--ink); color: var(--paper); display: grid; place-items: center; font-size: .8rem; font-weight: 600; align-self: center; }
+.legend time { font-variant-numeric: tabular-nums; font-weight: 600; }
+
+/* Sections */
+section { padding-block: 64px; }
+section.alt { background: var(--card); border-block: 1px solid var(--line); }
+.section-head { display: grid; gap: 12px; margin-bottom: 32px; }
+.section-head p { color: var(--muted); }
+
+.products { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.product { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 28px; display: grid; gap: 12px; align-content: start; }
+.product .when { font-weight: 600; color: var(--leaf); }
+.product.balance .when { color: #a96b14; }
+
+.steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 3px solid var(--ink); }
+.steps li { padding: 22px 24px 8px 0; display: grid; gap: 10px; align-content: start; }
+.steps li + li { padding-left: 24px; border-left: 1px solid var(--line); }
+.steps .clock { font-family: var(--display); font-size: 2.2rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+
+.tips { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 32px; padding: 0; margin: 0; list-style: none; }
+.tips li { padding-left: 22px; position: relative; }
+.tips li::before { content: ""; position: absolute; left: 0; top: .6em; width: 10px; height: 10px; border-radius: 50%; background: var(--sun); }
+
+.app-band { margin-top: 36px; padding: 24px 28px; border: 1px solid var(--line); border-left: 6px solid var(--leaf); border-radius: 16px; background: var(--paper); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+.app-band div:first-child { display: grid; gap: 6px; }
+.app-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.why div { display: grid; gap: 8px; }
+
+.faq { display: grid; gap: 10px; max-width: 760px; }
+.faq details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 20px; }
+.faq summary { cursor: pointer; font-weight: 600; font-size: 1.05rem; }
+.faq details p { margin-top: 10px; color: var(--muted); }
+
+.contact { background: var(--ink); color: var(--paper); border-radius: 24px; padding: 40px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center; }
+.contact p { color: #c9d8d3; }
+.contact a { color: var(--paper); }
+.contact .lines { display: grid; gap: 10px; font-size: 1.05rem; }
+.contact .lines span { color: #9fb7b0; font-size: .85rem; display: block; }
+.msg-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 8px; }
+.msg-btns .btn { color: var(--ink); }
+.btn.ghost.light { border-color: var(--paper); color: var(--paper); }
+.btn.ghost.light:hover { background: rgba(255,255,255,.1); }
+.placeholder { background: #fff3c4; color: #5a4300; padding: 0 6px; border-radius: 4px; }
+
+footer { padding-block: 40px 56px; color: var(--muted); font-size: .85rem; }
+footer .wrap { display: grid; gap: 10px; }
+footer p { max-width: 90ch; }
+
+@media (max-width: 860px) {
+  .hero .wrap, .contact { grid-template-columns: 1fr; }
+  .products, .why, .tips { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .steps li, .steps li + li { padding: 20px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+  section { padding-block: 48px; }
+  .contact { padding: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <b>Feel Great with Adelisa</b>
+      <span>Adelisa · Independent Unicity Distributor</span>
+    </div>
+    <a class="btn order-link" href="https://ufeelgreat.com/usa/en/product/feel-great?referralCode=282947901&amp;focus=true">Order Feel Great</a>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <div class="kicker">The Feel Great system</div>
+        <h1>Two drinks. One routine. A 16-hour window.</h1>
+        <p class="lede">Feel Great pairs Unimate in the morning with Balance before your biggest meal, built around a simple overnight fast. I'll help you order it, set it up and stick with it.</p>
+        <div class="ctas">
+          <a class="btn order-link" href="https://ufeelgreat.com/usa/en/product/feel-great?referralCode=282947901&amp;focus=true">Order through my link</a>
+          <a class="btn ghost" href="#contact">Ask me a question</a>
+        </div>
+      </div>
+
+      <div class="dial-box">
+        <svg class="dial" id="dial" viewBox="0 0 320 320" role="img" aria-label="24-hour clock: Unimate at 7 AM, lunch at noon, Balance at 6 PM, fast from 8 PM to noon">
+          <circle cx="160" cy="160" r="122" fill="#ffffff" stroke="#d6e0dc" stroke-width="1"/>
+          <g transform="rotate(-90 160 160)">
+            <circle id="arc-fast" cx="160" cy="160" r="122" fill="none" stroke="#2f7a62" stroke-width="18"/>
+            <circle id="arc-eat" cx="160" cy="160" r="122" fill="none" stroke="#e8a33d" stroke-width="18"/>
+          </g>
+          <g id="ticks"></g>
+          <g id="markers"></g>
+          <text x="160" y="152" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="46" fill="#12302c">16 h</text>
+          <text x="160" y="178" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="15" fill="#5b6e69">overnight fast</text>
+        </svg>
+        <ul class="legend">
+          <li><span class="n">1</span><time>7:00a</time><span>Unimate to start the day</span></li>
+          <li><span class="n">2</span><time>12:00p</time><span>First meal, Unimate again if you like</span></li>
+          <li><span class="n">3</span><time>6:00p</time><span>Balance before your biggest meal</span></li>
+          <li><span class="n">4</span><time>8:00p</time><span>Kitchen closes, the fast begins</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <section class="alt" id="products">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What's in the box</h2>
+        <p>The system is two products you mix with water. Times above are an example; shift the whole day to fit your schedule.</p>
+      </div>
+      <div class="products">
+        <article class="product">
+          <h3>Unimate</h3>
+          <div class="when">Morning, and again at lunch or mid-afternoon</div>
+          <p>A yerba mate drink for your morning. Unicity says it supports focus and helps you feel full, and it won't break your fast.</p>
+        </article>
+        <article class="product balance">
+          <h3>Balance</h3>
+          <div class="when">Right before or with your heaviest meal</div>
+          <p>A fiber drink you take with your biggest meal of the day. Shake it hard and drink it right away, before it thickens.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Three simple steps</h2>
+      </div>
+      <ol class="steps">
+        <li><span class="clock">AM</span><h3>Start with Unimate</h3><p>Mix it up first thing. You can take it again with lunch or as an afternoon pick-me-up.</p></li>
+        <li><span class="clock">PM</span><h3>Balance with your big meal</h3><p>Drink it just before or with the heaviest meal of your day.</p></li>
+        <li><span class="clock">16h</span><h3>Fast overnight</h3><p>After dinner, wait about 16 hours before your next meal. Most of it happens while you sleep.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="alt" id="tips">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Tips that make it easier</h2>
+      </div>
+      <ul class="tips">
+        <li>Use a shaker bottle for Balance and drink it as soon as it's mixed.</li>
+        <li>Start with a shorter fast and work up to 16 hours if that feels better.</li>
+        <li>Drink plenty of water through the day, especially while fasting.</li>
+        <li>Set phone reminders for your Unimate and Balance times for the first couple of weeks.</li>
+      </ul>
+      <div class="app-band" id="app">
+        <div>
+          <h3>Track your fast with the free app</h3>
+          <p>Unicity's Feel Great Fasting Coach app tracks your fasting progress and helps you build the daily habit.</p>
+        </div>
+        <div class="app-links">
+          <a class="btn ghost" href="https://apps.apple.com/us/app/feel-great-fasting-coach/id6445913865">App Store (iPhone)</a>
+          <a class="btn ghost" href="https://play.google.com/store/apps/details?id=com.unicity.feelgreatfasting">Google Play (Android)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Why order through me</h2>
+        <p>Your order goes through Unicity's official store and ships straight from them. You get a real person to call.</p>
+      </div>
+      <div class="why">
+        <div><h3>Help getting started</h3><p>I'll walk you through placing your first order and setting up your daily routine.</p></div>
+        <div><h3>Someone to check in with</h3><p>Text me with questions any time. I'll check in after your first couple of weeks.</p></div>
+        <div><h3>No sign-up pressure</h3><p>You're buying a product. You don't need to become a distributor or recruit anyone.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Questions people ask</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Do I have to become a distributor?</summary><p>No. You can order as a regular customer through my link.</p></details>
+        <details><summary>Where does my order come from?</summary><p>Unicity ships it directly to you. Ordering through my link just connects your account to me so I can help you.</p></details>
+        <details><summary>Does Unimate break my fast?</summary><p>According to Unicity, no. That's why it's the morning drink in the routine.</p></details>
+        <details><summary>Should I check with my doctor first?</summary><p>Yes, if you're pregnant or nursing, take medication, or have a health condition, talk to your doctor before starting Feel Great or a fasting routine.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <h2>Ready to try it?</h2>
+          <p style="margin-top:12px">Order through my link, or reach out first and I'll answer your questions.</p>
+          <div class="ctas" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px">
+            <a class="btn order-link" href="https://ufeelgreat.com/usa/en/product/feel-great?referralCode=282947901&amp;focus=true">Order Feel Great</a>
+          </div>
+        </div>
+        <div class="lines">
+          <p style="color:var(--paper);font-weight:600">Want more information? Send me a message.</p>
+          <div class="msg-btns">
+            <a class="btn" id="text-btn" href="sms:+14809538003?&amp;body=Hi%20Adelisa%2C%20I%27m%20interested%20in%20Feel%20Great%20and%20have%20a%20few%20questions.">Text me</a>
+            <a class="btn ghost light" id="email-btn" href="mailto:lllanita51@gmail.com?subject=Feel%20Great%20question&amp;body=Hi%20Adelisa%2C%0A%0AI%27m%20interested%20in%20Feel%20Great%20and%20have%20a%20few%20questions.%0A%0A">Email me</a>
+          </div>
+          <div><span>Text or call</span><a href="tel:+14809538003">(480) 953-8003</a></div>
+          <div><span>Email</span><a href="mailto:lllanita51@gmail.com">lllanita51@gmail.com</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Independent distributor.</b> Adelisa is an independent Unicity distributor. This is a personal website and is not operated or endorsed by Unicity International. Unicity, Feel Great, Unimate and Balance are trademarks of Unicity International, Inc.</p>
+    <p>These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var cx = 160, cy = 160, r = 122, C = 2 * Math.PI * r, ns = "http://www.w3.org/2000/svg";
+  function arc(id, startH, lenH) {
+    var el = document.getElementById(id), L = C * lenH / 24;
+    el.setAttribute("stroke-dasharray", L + " " + (C - L));
+    el.setAttribute("stroke-dashoffset", String(-C * startH / 24));
+  }
+  arc("arc-fast", 20, 16);
+  arc("arc-eat", 12, 8);
+  function pt(h, rad) {
+    var a = h / 24 * 2 * Math.PI;
+    return [cx + rad * Math.sin(a), cy - rad * Math.cos(a)];
+  }
+  var ticks = document.getElementById("ticks");
+  for (var h = 0; h < 24; h++) {
+    var p1 = pt(h, 104), p2 = pt(h, h % 6 === 0 ? 92 : 98);
+    var ln = document.createElementNS(ns, "line");
+    ln.setAttribute("x1", p1[0]); ln.setAttribute("y1", p1[1]);
+    ln.setAttribute("x2", p2[0]); ln.setAttribute("y2", p2[1]);
+    ln.setAttribute("stroke", "#9fb0ab"); ln.setAttribute("stroke-width", h % 6 === 0 ? 2 : 1);
+    ticks.appendChild(ln);
+  }
+  [[0, "12a"], [6, "6a"], [12, "12p"], [18, "6p"]].forEach(function (d) {
+    var p = pt(d[0], 78), t = document.createElementNS(ns, "text");
+    t.setAttribute("x", p[0]); t.setAttribute("y", p[1] + 5);
+    t.setAttribute("text-anchor", "middle"); t.setAttribute("font-size", "13");
+    t.setAttribute("font-family", "Source Sans 3, sans-serif"); t.setAttribute("fill", "#5b6e69");
+    t.textContent = d[1]; ticks.appendChild(t);
+  });
+  var markers = document.getElementById("markers");
+  [[7, "1"], [12, "2"], [18, "3"], [20, "4"]].forEach(function (m) {
+    var p = pt(m[0], r);
+    var c = document.createElementNS(ns, "circle");
+    c.setAttribute("cx", p[0]); c.setAttribute("cy", p[1]); c.setAttribute("r", 13);
+    c.setAttribute("fill", "#12302c"); c.setAttribute("stroke", "#ffffff"); c.setAttribute("stroke-width", 3);
+    var t = document.createElementNS(ns, "text");
+    t.setAttribute("x", p[0]); t.setAttribute("y", p[1] + 4.5);
+    t.setAttribute("text-anchor", "middle"); t.setAttribute("font-size", "13"); t.setAttribute("font-weight", "600");
+    t.setAttribute("font-family", "Source Sans 3, sans-serif"); t.setAttribute("fill", "#f3f6f4");
+    t.textContent = m[1];
+    markers.appendChild(c); markers.appendChild(t);
+  });
+})();
+</script>
+</body>
+</html>
