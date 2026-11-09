@@ -82,6 +82,23 @@ section { padding-block: 72px; }
 .section-head p { color: var(--muted); font-size: 1.1rem; }
 .center { text-align: center; justify-items: center; }
 
+/* Benefits */
+.benefits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.benefit { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 26px; }
+.benefit .ic { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; margin-bottom: 16px; }
+.benefit .ic svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.benefit .ic.s { background: #fff1d6; color: var(--sun-deep); }
+.benefit .ic.g { background: #e1f0e8; color: var(--leaf); }
+.benefit h3 { font-size: 1.3rem; margin-bottom: 8px; }
+.benefit p { color: #3f4f4a; font-size: 1.02rem; }
+.benefit .from { display: block; margin-top: 12px; font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.benefits-note { text-align: center; color: var(--muted); font-size: .88rem; margin: 22px auto 0; max-width: 70ch; }
+.stick-card ul { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.stick-card li { padding-left: 24px; position: relative; color: #3f4f4a; }
+.stick-card li::before { content: "\2713"; position: absolute; left: 0; font-weight: 800; color: var(--leaf); }
+@media (max-width: 900px) { .benefits { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .benefits { grid-template-columns: 1fr; } }
+
 /* Two sticks */
 .sticks { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .stick-card { border-radius: 26px; padding: 30px; display: grid; grid-template-columns: 70px 1fr; gap: 22px; align-items: start; }
@@ -225,7 +242,7 @@ footer p { max-width: 95ch; }
       <div>
         <div class="kicker">Gilbert, Arizona · Feel Great system</div>
         <h1>Two sticks a day. 90 days to love it.</h1>
-        <p class="lede">Unimate to start your day, Balance before your biggest meal, and an easy overnight fast. Try it backed by Unicity's 90-day money-back guarantee, with me to help you set it up and stick with it.</p>
+        <p class="lede">Steadier energy, fewer cravings and support for healthy blood sugar. Unimate to start your day, Balance before your biggest meal, and an easy overnight fast. Try it backed by Unicity's 90-day money-back guarantee, with me to help you set it up and stick with it.</p>
         <div class="ctas">
           <a class="btn" href="https://ufeelgreat.com/usa/en/product/feel-great?referralCode=282947901&amp;focus=true">Order Feel Great</a>
           <a class="btn ghost" href="sms:+14809538003?&amp;body=Hi%20Adelisa%2C%20I%27m%20interested%20in%20Feel%20Great%20and%20have%20a%20few%20questions.">Text me a question</a>
@@ -244,7 +261,26 @@ footer p { max-width: 95ch; }
     </div>
   </div>
 
-  <section id="how">
+  <section id="benefits">
+    <div class="wrap">
+      <div class="section-head center">
+        <div class="kicker">What it can do for you</div>
+        <h2>More than "feel great"</h2>
+        <p>Here's what Unimate, Balance and the overnight fast are made to help with.</p>
+      </div>
+      <div class="benefits">
+        <article class="benefit"><div class="ic s"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/></svg></div><h3>Steady energy and focus</h3><p>Unimate is a yerba mate drink Unicity says supports healthy cognitive function, endurance and stamina. Clear-headed mornings, no sugary coffee drink needed.</p><span class="from">Unimate</span></article>
+        <article class="benefit"><div class="ic g"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12c0-4 3.5-8 8-8s8 4 8 8"/><path d="M4 12h16"/><path d="M7 16h10M9 20h6"/></svg></div><h3>Fewer cravings</h3><p>Both drinks help you feel full. Unicity says Balance helps curb appetite between meals, so the evening snack attack gets easier to skip.</p><span class="from">Unimate + Balance</span></article>
+        <article class="benefit"><div class="ic s"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div><h3>A better mood</h3><p>Unicity says Unimate supports feelings of well-being. Many people simply feel better starting the day with it.</p><span class="from">Unimate</span></article>
+        <article class="benefit"><div class="ic g"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l5-5 4 4 8-8"/><path d="M15 8h5v5"/></svg></div><h3>Support for healthy blood sugar</h3><p>Unicity says Balance helps reduce how many carbs your body absorbs from a meal, which supports blood sugar levels already in a healthy range.</p><span class="from">Balance</span></article>
+        <article class="benefit"><div class="ic g"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C7 17 4 13.5 4 9.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 8 2.5c0 4-3 7.5-8 11.5z"/><path d="M8 12h2l1.5-2.5 2 5 1.5-2.5h1"/></svg></div><h3>Heart-friendly support</h3><p>Unicity says Balance aids in reducing the dietary cholesterol absorbed into your bloodstream, and it adds fiber plus essential vitamins and minerals to your biggest meal.</p><span class="from">Balance</span></article>
+        <article class="benefit"><div class="ic s"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div><h3>Fasting made easier</h3><p>The two drinks make a 16-hour overnight fast doable. Unicity notes time-based eating has been associated with healthy blood pressure, heart health and better body composition.</p><span class="from">The overnight fast</span></article>
+      </div>
+      <p class="benefits-note">Benefits as described by Unicity. Results vary and depend on daily, consistent use. Feel Great is not intended to diagnose, treat, cure or prevent any disease; talk to your doctor if you have a health condition or take medication.</p>
+    </div>
+  </section>
+
+  <section id="how" style="padding-top:0">
     <div class="wrap">
       <div class="section-head center">
         <div class="kicker">What's in the box</div>
@@ -257,7 +293,8 @@ footer p { max-width: 95ch; }
           <div>
             <div class="when">Morning</div>
             <h3>Unimate</h3>
-            <p>A yerba mate drink to start your day. Unicity says it supports focus and helps you feel full, and it won't break your fast. Have another with lunch or as an afternoon pick-me-up.</p>
+            <p>A yerba mate drink to start your day, and again with lunch or as an afternoon pick-me-up. It won't break your fast.</p>
+            <ul><li>Energy and focus</li><li>Helps you feel full</li><li>Supports a good mood</li></ul>
           </div>
         </article>
         <article class="stick-card b">
@@ -266,6 +303,7 @@ footer p { max-width: 95ch; }
             <div class="when">Before your big meal</div>
             <h3>Balance</h3>
             <p>A fiber drink you take right before or with the heaviest meal of your day. Shake it hard and drink it right away.</p>
+            <ul><li>Curbs appetite between meals</li><li>Helps reduce carb and cholesterol absorption</li><li>Fiber plus essential vitamins and minerals</li></ul>
           </div>
         </article>
       </div>
