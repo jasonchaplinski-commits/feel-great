@@ -138,6 +138,17 @@ section { padding-block: 72px; }
 .video-text { display: grid; gap: 10px; justify-items: start; }
 .video-text h3 { font-size: 1.6rem; }
 .video-text p { color: var(--muted); }
+.guarantee { display: grid; grid-template-columns: auto 1fr; gap: 30px; align-items: center; background: #fff; border: 2px solid var(--ink); border-radius: 28px; padding: 32px; }
+.guarantee p { color: #3f4f4a; margin-top: 10px; }
+.guarantee .fine { font-size: .85rem; color: var(--muted); }
+.seal { display: grid; place-items: center; text-align: center; width: 150px; height: 150px; border-radius: 50%; background: var(--ink); color: #fff; font-family: var(--display); font-weight: 800; line-height: 1; box-shadow: 0 0 0 7px var(--sun) inset; }
+.seal big { font-size: 3rem; display: block; color: var(--sun); }
+.seal small { font-size: .72rem; letter-spacing: .06em; }
+.pay { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+.pay div { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 16px; display: grid; gap: 4px; }
+.pay b { font-family: var(--display); font-size: 1.15rem; }
+.pay span { color: var(--muted); font-size: .92rem; }
+.final .risk-line { color: #e9f1ee; font-weight: 600; font-size: .95rem; margin-top: 14px; }
 .app-band { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; padding: 22px 26px; border-radius: 20px; background: #fff; border: 1px solid var(--line); }
 .app-band div:first-child { display: grid; gap: 4px; }
 
@@ -162,7 +173,11 @@ footer p { max-width: 95ch; }
 
 @media (max-width: 900px) {
   nav.links { display: none; }
-  .hero .wrap, .day, .meet, .final, .signup { grid-template-columns: 1fr; }
+  .hero .wrap, .day, .meet, .final, .signup, .guarantee { grid-template-columns: 1fr; }
+  .pay { grid-template-columns: 1fr; }
+  .guarantee { padding: 24px; }
+  .seal { width: 120px; height: 120px; }
+  .seal big { font-size: 2.4rem; }
   .signup { padding: 26px; border-radius: 24px; }
   .hero .wrap { padding-block: 36px 90px; gap: 36px; }
   .photo-card { width: min(320px, 86%); }
@@ -193,12 +208,6 @@ footer p { max-width: 95ch; }
       <div class="mark" aria-hidden="true"></div>
       <div><b>Feel Great with Adelisa</b><span>Independent Unicity Distributor</span></div>
     </div>
-    <nav class="links" aria-label="Sections">
-      <a href="#how">How it works</a>
-      <a href="#day">Your day</a>
-      <a href="#meet">Meet Adelisa</a>
-      <a href="#faq">FAQ</a>
-    </nav>
     <a class="btn sm" href="https://ufeelgreat.com/usa/en/product/feel-great?referralCode=282947901&amp;focus=true">Order now</a>
   </div>
 </header>
@@ -208,16 +217,16 @@ footer p { max-width: 95ch; }
     <div class="wrap">
       <div>
         <div class="kicker">Gilbert, Arizona · Feel Great system</div>
-        <h1>Two sticks. Simple mornings. A routine you'll keep.</h1>
-        <p class="lede">Unimate to start your day, Balance before your biggest meal, and an easy overnight fast. Order through me and I'll help you set it up and stick with it.</p>
+        <h1>Two sticks a day. 90 days to love it.</h1>
+        <p class="lede">Unimate to start your day, Balance before your biggest meal, and an easy overnight fast. Try it backed by Unicity's 90-day money-back guarantee, with me to help you set it up and stick with it.</p>
         <div class="ctas">
           <a class="btn" href="https://ufeelgreat.com/usa/en/product/feel-great?referralCode=282947901&amp;focus=true">Order Feel Great</a>
           <a class="btn ghost" href="sms:+14809538003?&amp;body=Hi%20Adelisa%2C%20I%27m%20interested%20in%20Feel%20Great%20and%20have%20a%20few%20questions.">Text me a question</a>
         </div>
         <ul class="trust">
-          <li>Ships direct from Unicity</li>
+          <li>90-day money-back guarantee</li>
+          <li>Pay with HSA/FSA</li>
           <li>Personal setup help</li>
-          <li>No sign-up required</li>
         </ul>
       </div>
       <div class="photo-card">
@@ -366,11 +375,32 @@ footer p { max-width: 95ch; }
     </div>
   </section>
 
+  <section id="guarantee" style="padding-top:0">
+    <div class="wrap">
+      <div class="guarantee">
+        <div class="seal"><span><big>90</big><small>DAY MONEY-BACK<br>GUARANTEE</small></span></div>
+        <div>
+          <div class="kicker">Try it without the risk</div>
+          <h2>Feel great in 90 days, or your money back</h2>
+          <p>Unicity offers a 90-day, 100% money-back satisfaction guarantee on Feel Great. Take it daily and consistently; if you don't get the results you wanted within 90 days, you can request a full refund. I'll help you through it if it ever comes to that.</p>
+          <p class="fine">Guarantee terms are set by Unicity and apply to customer and member accounts. Unicity may require consistent use, such as logging in the Feel Great Fasting app. Ask me for the current details.</p>
+        </div>
+      </div>
+      <div class="pay">
+        <div><b>HSA / FSA accepted</b><span>Unicity's store lets you pay with a health savings or flexible spending card.</span></div>
+        <div><b>Ships from Unicity</b><span>Your order comes straight from Unicity, on Unicity's own checkout.</span></div>
+        <div><b>A real person to text</b><span>(480) 953-8003. Setup help, check-ins and reorder reminders.</span></div>
+      </div>
+    </div>
+  </section>
+
   <section id="faq" style="padding-top:0">
     <div class="wrap">
       <div class="section-head center"><h2>Questions people ask</h2></div>
       <div class="faq">
-        <details open><summary>Do I have to become a distributor?</summary><p>No. You order as a regular customer through my link.</p></details>
+        <details open><summary>What if it doesn't work for me?</summary><p>Unicity's 90-day money-back guarantee covers Feel Great. Text me and I'll walk you through it.</p></details>
+        <details><summary>Can I use my HSA or FSA card?</summary><p>Unicity's store says it accepts HSA/FSA payment for Feel Great.</p></details>
+        <details><summary>Do I have to become a distributor?</summary><p>No. You order as a regular customer through my link.</p></details>
         <details><summary>Where does my order come from?</summary><p>Unicity ships it directly to you. Ordering through my link connects your account to me so I can help.</p></details>
         <details><summary>Does Unimate break my fast?</summary><p>According to Unicity, no. That's why it's the morning drink in the routine.</p></details>
         <details><summary>Should I check with my doctor first?</summary><p>Yes, if you're pregnant or nursing, take medication, or have a health condition, talk to your doctor before starting Feel Great or a fasting routine.</p></details>
@@ -388,6 +418,7 @@ footer p { max-width: 95ch; }
             <a class="btn" href="https://ufeelgreat.com/usa/en/product/feel-great?referralCode=282947901&amp;focus=true">Order Feel Great</a>
             <a class="btn ghost" href="sms:+14809538003?&amp;body=Hi%20Adelisa%2C%20I%27m%20interested%20in%20Feel%20Great%20and%20have%20a%20few%20questions.">Text me</a>
           </div>
+          <p class="risk-line">90-day money-back guarantee · Pay with HSA/FSA</p>
         </div>
         <div class="contact-lines">
           <div><span>Text or call</span><a href="tel:+14809538003">(480) 953-8003</a></div>
