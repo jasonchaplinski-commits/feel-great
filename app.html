@@ -40,6 +40,11 @@ p { margin: 0 0 12px; color: #3f4f4a; max-width: 46ch; }
 .stores { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
 .stores a { border: 2px solid var(--ink); color: var(--ink); text-decoration: none; font-weight: 700; padding: 9px 18px; border-radius: 999px; font-size: .95rem; }
 .risk { font-size: .92rem; font-weight: 600; margin-top: 12px; }
+.copy-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.copy { font: inherit; font-weight: 700; font-size: .9rem; padding: 8px 14px; border-radius: 999px; border: 2px solid var(--leaf, #2f7a62); background: #fff; color: var(--leaf, #2f7a62); cursor: pointer; }
+.copy.done { background: var(--leaf, #2f7a62); color: #fff; }
+.copy:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.copy { margin-top: 14px; }
 .fine { font-size: .78rem; color: var(--muted); margin-top: 24px; max-width: 60ch; }
 @media (max-width: 760px) { .wrap { grid-template-columns: 1fr; gap: 22px; } .player { max-width: 340px; justify-self: center; } }
 </style>
@@ -55,10 +60,22 @@ p { margin: 0 0 12px; color: #3f4f4a; max-width: 46ch; }
     <a class="btn" href="order.html">Order Feel Great</a>
     <div class="stores"><a href="https://apps.apple.com/us/app/feel-great-fasting-coach/id6445913865">Get it on the App Store</a><a href="https://play.google.com/store/apps/details?id=com.unicity.feelgreatfasting">Get it on Google Play</a></div>
     <p class="risk">90-day money-back guarantee* · Pay with HSA/FSA</p>
+    <div><button type="button" class="copy" data-url="https://feelgreatwithadelisa.com/app.html">Copy link to share</button></div>
     <a class="ghost" href="https://feelgreatwithadelisa.com/">Learn more on Adelisa's site →</a>
+    <a class="ghost" href="app-tl.html" lang="tl">Panoorin sa Tagalog →</a>
     <p class="fine">*Guarantee terms set by Unicity; conditions apply. Adelisa is an independent Unicity distributor. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
   </div>
 </main>
+<script>
+document.querySelectorAll('.copy').forEach(function (b) {
+  var label = b.textContent;
+  b.addEventListener('click', function () {
+    var url = b.dataset.url, done = function () { b.textContent = b.dataset.done || 'Link copied!'; b.classList.add('done'); setTimeout(function () { b.textContent = label; b.classList.remove('done'); }, 2200); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(url).then(done, function () { prompt('Copy this link:', url); });
+    else { var t = document.createElement('textarea'); t.value = url; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); done(); } catch (e) { prompt('Copy this link:', url); } t.remove(); }
+  });
+});
+</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "f36580ab1d7f4f0089ac313585e866e2"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

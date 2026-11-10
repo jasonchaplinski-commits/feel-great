@@ -162,6 +162,14 @@ section { padding-block: 72px; }
 .video-text { display: grid; gap: 10px; justify-items: start; }
 .video-text h3 { font-size: 1.6rem; }
 .video-text p { color: var(--muted); }
+.lang { display: inline-flex; border: 2px solid var(--ink); border-radius: 999px; overflow: hidden; }
+.lang button { font: inherit; font-weight: 700; font-size: .9rem; padding: 6px 16px; background: transparent; border: 0; color: var(--ink); cursor: pointer; }
+.lang button.on { background: var(--ink); color: #fff; }
+.lang button:focus-visible { outline: 3px solid var(--sun); outline-offset: -3px; }
+.copy-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.copy { font: inherit; font-weight: 700; font-size: .9rem; padding: 8px 14px; border-radius: 999px; border: 2px solid var(--leaf, #2f7a62); background: #fff; color: var(--leaf, #2f7a62); cursor: pointer; }
+.copy.done { background: var(--leaf, #2f7a62); color: #fff; }
+.copy:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
 .guarantee { display: grid; grid-template-columns: auto 1fr; gap: 30px; align-items: center; background: #fff; border: 2px solid var(--ink); border-radius: 28px; padding: 32px; }
 .guarantee p { color: #3f4f4a; margin-top: 10px; }
 .guarantee .fine { font-size: .85rem; color: var(--muted); }
@@ -355,24 +363,29 @@ footer p { max-width: 95ch; }
       <div class="video-band">
         <div class="video-frame"><video src="feel-great-promo.mp4" poster="promo-poster.jpg" controls playsinline preload="none" aria-label="Feel Great with Adelisa 30-second video"></video></div>
         <div class="video-text">
+          <div class="lang" role="group" aria-label="Video language"><button type="button" class="on" aria-pressed="true" data-src="feel-great-promo.mp4" data-poster="promo-poster.jpg">English</button><button type="button" aria-pressed="false" data-src="feel-great-promo-tl.mp4" data-poster="promo-tl-poster.jpg">Tagalog</button></div>
           <div class="kicker">30-second video</div>
           <h3>See how Feel Great works</h3>
           <p>Unimate, Balance and an easy overnight fast, in under a minute. Ready to try it? Order through my link so I can help you get started.</p>
           <a class="btn" href="order.html">Order Feel Great</a>
           <p class="g-small"><a href="#guarantee">90-day money-back guarantee*</a> · Pay with HSA/FSA</p>
+          <p class="g-small">Share this video with a friend:</p>
+          <div class="copy-row"><button type="button" class="copy" data-url="https://feelgreatwithadelisa.com/video.html">Copy English link</button><button type="button" class="copy" data-url="https://feelgreatwithadelisa.com/video-tl.html" data-done="Nakopya na!">Copy Tagalog link</button></div>
         </div>
       </div>
       <div class="video-band" id="app">
         <div class="video-frame"><video src="app-tour.mp4" poster="app-tour-poster.jpg" controls playsinline preload="none" aria-label="Feel Great app tour video, 85 seconds"></video></div>
         <div class="video-text">
-          <div class="kicker">85-second app tour</div>
+          <div class="lang" role="group" aria-label="Video language"><button type="button" class="on" aria-pressed="true" data-src="app-tour.mp4" data-poster="app-tour-poster.jpg">English</button><button type="button" aria-pressed="false" data-src="app-tour-tl.mp4" data-poster="app-tour-tl-poster.jpg">Tagalog</button></div>
+          <div class="kicker">App tour</div>
           <h3>Get the most from the free Feel Great app</h3>
           <p>Your plan, the daily tracker, recipes, guides and the AI coach. Place your first order through my link to get member pricing. I'll help you set up the app, and after that you can reorder right in the app. Your orders stay linked to me, so I can keep helping you.</p>
           <div class="ctas" style="margin-top:0">
             <a class="btn ghost sm" href="https://apps.apple.com/us/app/feel-great-fasting-coach/id6445913865">App Store</a>
             <a class="btn ghost sm" href="https://play.google.com/store/apps/details?id=com.unicity.feelgreatfasting">Google Play</a>
           </div>
-          <p class="g-small"><a href="app.html">Share this app tour →</a></p>
+          <p class="g-small">Share this app tour with a friend:</p>
+          <div class="copy-row"><button type="button" class="copy" data-url="https://feelgreatwithadelisa.com/app.html">Copy English link</button><button type="button" class="copy" data-url="https://feelgreatwithadelisa.com/app-tl.html" data-done="Nakopya na!">Copy Tagalog link</button></div>
         </div>
       </div>
     </div>
@@ -579,6 +592,26 @@ footer p { max-width: 95ch; }
     }).then(function () { btn.disabled = false; btn.textContent = "Send me the guide"; });
   });
 })();
+</script>
+<script>
+document.querySelectorAll('.lang').forEach(function (g) {
+  g.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b || b.classList.contains('on')) return;
+    var v = g.closest('.video-band').querySelector('video');
+    v.pause(); v.poster = b.dataset.poster; v.src = b.dataset.src; v.load();
+    g.querySelectorAll('button').forEach(function (x) { var on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-pressed', on); });
+  });
+});
+</script>
+<script>
+document.querySelectorAll('.copy').forEach(function (b) {
+  var label = b.textContent;
+  b.addEventListener('click', function () {
+    var url = b.dataset.url, done = function () { b.textContent = b.dataset.done || 'Link copied!'; b.classList.add('done'); setTimeout(function () { b.textContent = label; b.classList.remove('done'); }, 2200); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(url).then(done, function () { prompt('Copy this link:', url); });
+    else { var t = document.createElement('textarea'); t.value = url; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); done(); } catch (e) { prompt('Copy this link:', url); } t.remove(); }
+  });
+});
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "f36580ab1d7f4f0089ac313585e866e2"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
