@@ -255,6 +255,7 @@ footer p { max-width: 95ch; }
   header.top .btn { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+@media (max-width: 760px) { .cost-grid { grid-template-columns: 1fr !important; } .story-card { padding: 24px !important; } #stories, #cost { padding: 44px 16px !important; } }
 </style>
 </head>
 <body>
@@ -314,6 +315,29 @@ footer p { max-width: 95ch; }
     </div>
   </section>
 
+<section id="stories" style="background: #fffaf3; color: #12302c; font-family: 'Source Sans 3', system-ui, sans-serif; padding: 72px 24px">
+<div style="max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-direction: column; gap: 10px; max-width: 640px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: .1em; color: #2f7a62">REAL STORIES</span>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: clamp(32px, 6vw, 48px); line-height: 1.02">Real people. Real moments.</h2>
+<p style="margin: 0; font-size: 19px; color: #4f5d58">What Feel Great looks like in everyday life.</p>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 820px); gap: 24px">
+<figure class="story-card" style="margin: 0; background: #12302c; color: #ffffff; border-radius: 28px; padding: 40px; display: flex; flex-direction: column; gap: 22px; position: relative; overflow: hidden">
+<div style="display: flex; justify-content: space-between; align-items: flex-start"><svg width="44" height="36" viewBox="0 0 44 36" aria-hidden="true"><path d="M4 34V20C4 10 9 4 18 2l2 4c-5 2-8 6-8 11h7v17H4zm22 0V20c0-10 5-16 14-18l2 4c-5 2-8 6-8 11h7v17H26z" fill="#f0a23a"></path></svg><div style="background: #fff7e6; border-radius: 50%; width: 84px; height: 84px; display: flex; align-items: center; justify-content: center"><svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#12302c" stroke-width="2.5" stroke-linejoin="round"><path d="M8 14c12-6 28-6 40 0L28 50 8 14z" fill="#fad48c"></path><path d="M8 14c12-6 28-6 40 0" stroke="#f0a23a" stroke-width="6"></path><circle cx="24" cy="24" r="3" fill="#2f7a62" stroke="none"></circle><circle cx="33" cy="30" r="3" fill="#2f7a62" stroke="none"></circle><circle cx="27" cy="37" r="2.5" fill="#2f7a62" stroke="none"></circle></svg></div></div>
+<blockquote style="margin: 0; font-size: clamp(17px, 2.2vw, 22px); line-height: 1.45; font-weight: 600">&ldquo;I spent $60 on two large pizzas and wings for Monday Night Football, ready to go all in. A few wings and two slices later, I was done. I just didn't have the cravings I usually do. Never thought I'd have leftover pizza on game night. Feel Great might be bad for my pizza budget, but I'll take it.&rdquo;</blockquote>
+<figcaption style="display: flex; align-items: center; gap: 14px">
+<span style="width: 48px; height: 48px; border-radius: 50%; background: #f0a23a; color: #12302c; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 22px; display: flex; align-items: center; justify-content: center">J</span>
+<span style="display: flex; flex-direction: column"><strong style="font-size: 17px">Jason</strong><span style="font-size: 15px; color: #b9cdc7">Adelisa&rsquo;s fianc&eacute;</span></span>
+</figcaption>
+</figure>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between">
+<span style="font-size: 14px; color: #4f5d58">Individual experiences vary. Testimonials reflect personal experiences, not typical results.</span>
+<a href="order.html" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 26px; border-radius: 999px; background: #f0a23a; color: #12302c; font-weight: 700; text-decoration: none">Try it for 90 days*</a>
+</div>
+</div>
+</section>
   <section id="guarantee" style="padding-top:0">
     <div class="wrap">
       <div class="g-box">
@@ -485,6 +509,20 @@ footer p { max-width: 95ch; }
     </div>
   </section>
 
+<section id="cost" style="background: #12302c; color: #ffffff; font-family: 'Source Sans 3', system-ui, sans-serif; padding: 64px 24px">
+<div class="cost-grid" style="max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: .1em; color: #f0a23a">THE MATH</span>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: clamp(32px, 6vw, 46px); line-height: 1.04">Under $6 a day.</h2>
+<p style="margin: 0; font-size: 19px; color: #cfe0da; max-width: 46ch">About $5.30 a day with a monthly subscription. That&rsquo;s less than a lot of people spend on one coffee or energy drink. Use your HSA or FSA, and try it with a 90-day money-back guarantee.*</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px">
+<a href="order.html" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 26px; border-radius: 999px; background: #f0a23a; color: #12302c; font-weight: 700; text-decoration: none">Order through Adelisa</a>
+</div>
+<span style="font-size: 13px; color: #b9cdc7">Based on a $159/month subscription for a 30-day supply ($235 one-time). Prices set by Unicity and may change. *Guarantee terms set by Unicity; conditions apply.</span>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px"><div style="background: #1c4741; border-radius: 22px; padding: 24px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: clamp(26px, 3vw, 36px); color: #f0a23a">$5.30</span><span style="font-size: 16px; color: #cfe0da">Feel Great, per day</span></div><div style="background: #1c4741; border-radius: 22px; padding: 24px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: clamp(26px, 3vw, 36px)">Up to $8</span><span style="font-size: 16px; color: #cfe0da">A specialty coffee</span></div><div style="background: #1c4741; border-radius: 22px; padding: 24px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: clamp(26px, 3vw, 36px)">$4&ndash;6</span><span style="font-size: 16px; color: #cfe0da">An energy drink</span></div><div style="background: #1c4741; border-radius: 22px; padding: 24px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: clamp(26px, 3vw, 36px)">11 days</span><span style="font-size: 16px; color: #cfe0da">of Feel Great for the price of one $60 pizza night</span></div></div>
+</div>
+</section>
   <section id="why-order" style="padding-top:0">
     <div class="wrap">
       <div class="pay">
