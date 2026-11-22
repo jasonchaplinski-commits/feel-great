@@ -254,18 +254,30 @@ footer p { max-width: 95ch; }
   .stick { width: 44px; height: 140px; }
   header.top .btn { display: none; }
 }
+/* Senior Manager recognition (Nov 2026) */
+.honor-bar { background: var(--ink); color: var(--paper); text-align: center; font-size: .95rem; padding: 9px 16px; line-height: 1.35; }
+.honor-bar b { color: #f3c968; }
+.brand span .rank { color: #8a5d0c; font-weight: 700; }
+.photo-card .ribbon { position: absolute; left: -22px; top: 30px; background: linear-gradient(135deg, #f7d77a, #d9a032); color: var(--ink); border-radius: 12px; padding: 8px 14px; box-shadow: 0 10px 24px rgba(18,48,44,.22); display: grid; gap: 0; transform: rotate(-3deg); }
+.photo-card .ribbon small { font-size: .68rem; letter-spacing: .12em; font-weight: 700; color: #5a3d06; }
+.photo-card .ribbon b { font-family: var(--display); font-weight: 800; font-size: 1.1rem; line-height: 1.1; }
+.honor { display: inline-flex; align-items: center; gap: 12px; margin-top: 16px; background: #fff; border: 1px solid #ecdcbf; border-radius: 14px; padding: 10px 16px 10px 10px; box-shadow: 0 4px 14px rgba(18,48,44,.06); }
+.honor .medal { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #f7d77a, #d9a032); display: grid; place-items: center; color: var(--ink); flex: none; }
+.honor b { display: block; font-size: 1rem; }
+.honor span { font-size: .88rem; color: var(--muted); }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 @media (max-width: 760px) { .cost-grid { grid-template-columns: 1fr !important; } .story-card { padding: 24px !important; } #stories, #cost { padding: 44px 16px !important; } }
 </style>
 </head>
 <body>
 
+<div class="honor-bar" role="note"><b>&#9733;</b> <b>Adelisa just reached Senior Manager with Unicity</b>, thank you to every customer who made it happen! <b>&#9733;</b></div>
 
 <header class="top">
   <div class="wrap">
     <div class="brand">
       <div class="mark" aria-hidden="true"></div>
-      <div><b>Feel Great with Adelisa</b><span>Independent Unicity Distributor</span></div>
+      <div><b>Feel Great with Adelisa</b><span><span class="rank">Senior Manager</span> · Independent Unicity Distributor</span></div>
     </div>
     <a class="btn sm" href="order.html">Order now</a>
   </div>
@@ -287,10 +299,15 @@ footer p { max-width: 95ch; }
           <li>Pay with HSA/FSA</li>
           <li>Personal setup help</li>
         </ul>
+        <div class="honor">
+          <div class="medal" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14" r="6"/><path d="M8.5 9.2 6 2h4l2 4 2-4h4l-2.5 7.2"/><path d="m12 11.5.9 1.8 2 .3-1.5 1.4.4 2-1.8-1-1.8 1 .4-2-1.5-1.4 2-.3z"/></svg></div>
+          <div><b>Unicity Senior Manager</b><span>Recognized for helping people get real results</span></div>
+        </div>
       </div>
       <div class="photo-card">
         <img src="adelisa.webp" width="480" height="587" alt="Adelisa smiling in sunglasses on a sunny Arizona day, holding her water tumbler">
         <div class="sun">Hi!<br>I'm<br>Adelisa</div>
+        <div class="ribbon"><small>UNICITY</small><b>Senior Manager</b></div>
         <div class="tag"><b>Real person, real help</b><span>Text me anytime: (480) 953-8003</span></div>
       </div>
     </div>
@@ -513,7 +530,7 @@ footer p { max-width: 95ch; }
         <div>
           <div class="kicker">Meet Adelisa</div>
           <h2>Hi, I'm Adelisa.</h2>
-          <p class="sig">Independent Unicity distributor · Gilbert, Arizona</p>
+          <p class="sig">Unicity Senior Manager · Independent distributor · Gilbert, Arizona</p>
           <div class="ctas">
             <a class="btn" href="order.html">Order through my link</a>
             <a class="btn ghost" href="mailto:lllanita51@gmail.com?subject=Feel%20Great%20question">Email me</a>
